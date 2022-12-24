@@ -40,7 +40,9 @@ func _process(_delta):
 		_target_point_world = _path[0]
 		
 	#$Label.text = str(health)
-	if health<1: self.queue_free()
+	if health<1: 
+		self.queue_free()
+		get_tree().root.get_child(0).get_child(0).coin += 100
 		
 	update()
 		
@@ -68,7 +70,7 @@ func hit():
 	
 	
 func reached_destination():
-	get_tree().root.get_child(0).get_child(0).health -= 10
+	get_tree().root.get_child(0).get_child(0).health -= 10 #Tilemap node
 	queue_free()
 
 func _move_to(world_position):
